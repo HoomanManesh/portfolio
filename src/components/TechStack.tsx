@@ -11,23 +11,90 @@ import {
   RapierRigidBody,
 } from "@react-three/rapier";
 
-const textureLoader = new THREE.TextureLoader();
-const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+const skillNames = [
+  // Languages
+  "Python", "Java", "JavaScript", "C", "SQL", "HTML", "CSS", "Bash",
+  // Backend
+  "REST API", "Node.js", "Spring Boot", "Auth Systems", "API Design", "Microservices",
+  // Frameworks & Tools
+  "Docker", "Git", "Supabase", "Vite", "GitHub", "Linux", "Flask", "Kafka", "Pandas", "JSON",
+  // Databases
+  "PostgreSQL", "SQL Design", "Data Modeling",
+  // Security
+  "Security+", "Wireshark", "SIEM", "Firewall", "VPN", "Forensics", "Pen Testing", "Threat Hunt",
+  // Networking
+  "TCP/IP", "DNS", "Packet Analysis", "HTTP/S",
+  // Systems
+  "Memory Mgmt", "OS Design", "Virtual Mem",
+  // Web & DevOps
+  "CI/CD", "Deployment", "Responsive UI",
+  // AI / Robotics
+  "Robotics API", "Data Pipeline",
+  // Software Engineering
+  "OOP", "Algorithms", "System Design", "Unit Testing",
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+
+function createTextTexture(text: string): THREE.CanvasTexture {
+  const size = 256;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d")!;
+
+  // Circle background
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, size / 2 - 2, 0, Math.PI * 2);
+  ctx.fillStyle = "#12002e";
+  ctx.fill();
+
+  // Purple border
+  ctx.strokeStyle = "#7f40ff";
+  ctx.lineWidth = 7;
+  ctx.stroke();
+
+  // Measure and wrap text
+  const words = text.split(" ");
+  const maxWidth = size * 0.7;
+  let fontSize = text.length > 11 ? 26 : text.length > 7 ? 32 : 38;
+  ctx.font = `600 ${fontSize}px sans-serif`;
+
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    const test = current ? current + " " + word : word;
+    if (ctx.measureText(test).width > maxWidth && current) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = test;
+    }
+  }
+  if (current) lines.push(current);
+
+  // If a single line is still too wide, shrink font
+  if (lines.length === 1 && ctx.measureText(lines[0]).width > maxWidth) {
+    fontSize = Math.floor(fontSize * (maxWidth / ctx.measureText(lines[0]).width));
+    ctx.font = `600 ${fontSize}px sans-serif`;
+  }
+
+  ctx.fillStyle = "#ffffff";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  const lineHeight = fontSize + 10;
+  const totalHeight = lineHeight * lines.length;
+  lines.forEach((line, i) => {
+    const y = size / 2 - totalHeight / 2 + lineHeight * i + lineHeight / 2;
+    ctx.fillText(line, size / 2, y);
+  });
+
+  return new THREE.CanvasTexture(canvas);
+}
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
-const spheres = [...Array(30)].map(() => ({
-  scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
+const spheres = skillNames.map(() => ({
+  scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)] as number,
 }));
 
 type SphereProps = {
@@ -60,7 +127,6 @@ function SphereGeo({
           -50 * delta * scale
         )
       );
-
     api.current?.applyImpulse(impulse, true);
   });
 
@@ -151,24 +217,25 @@ const TechStack = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const materials = useMemo(() => {
-    return textures.map(
-      (texture) =>
-        new THREE.MeshPhysicalMaterial({
-          map: texture,
-          emissive: "#ffffff",
-          emissiveMap: texture,
-          emissiveIntensity: 0.3,
-          metalness: 0.5,
-          roughness: 1,
-          clearcoat: 0.1,
-        })
-    );
+    return skillNames.map((name) => {
+      const texture = createTextTexture(name);
+      return new THREE.MeshPhysicalMaterial({
+        map: texture,
+        emissive: "#c2a4ff",
+        emissiveMap: texture,
+        emissiveIntensity: 0.15,
+        metalness: 0.4,
+        roughness: 0.8,
+        clearcoat: 0.2,
+      });
+    });
   }, []);
 
   return (
     <div className="techstack">
-      <h2> My Techstack</h2>
+      <h2>My Techstack</h2>
 
       <Canvas
         shadows
@@ -193,7 +260,7 @@ const TechStack = () => {
             <SphereGeo
               key={i}
               {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
+              material={materials[i]}
               isActive={isActive}
             />
           ))}

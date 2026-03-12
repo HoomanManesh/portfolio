@@ -6,6 +6,51 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
+const projects = [
+  {
+    name: "TacticLang",
+    category: "Programming Language / Interpreter",
+    tools: "Python",
+    image: "/images/construction.png",
+    link: "https://github.com/hoomanmanesh/TacticLang",
+  },
+  {
+    name: "Shipping App",
+    category: "Full-Stack Web Application",
+    tools: "C++, Node.js, JavaScript, HTML, CSS",
+    image: "/images/shipping.png",
+    link: "https://github.com/hoomanmanesh/shipping-app",
+  },
+  {
+    name: "Aztec BBall Scouting",
+    category: "Sports Analytics",
+    tools: "Python, Data Analysis",
+    image: "/images/construction.png",
+    link: "https://github.com/hoomanmanesh/AztecBBallScouting",
+  },
+  {
+    name: "Valentine",
+    category: "Creative Web",
+    tools: "JavaScript, HTML, CSS",
+    image: "/images/construction.png",
+    link: "https://github.com/hoomanmanesh/Valentine",
+  },
+  {
+    name: "Background Remover",
+    category: "Full-Stack Web Application",
+    tools: "Python, Flask, JavaScript, HTML, CSS",
+    image: "/images/hm_bgr.png",
+    link: "https://github.com/hoomanmanesh/background-remover",
+  },
+  {
+    name: "JPMorgan Forage",
+    category: "Software Engineering",
+    tools: "Java",
+    image: "/images/construction.png",
+    link: "https://github.com/hoomanmanesh/forage-midas",
+  },
+];
+
 const Work = () => {
   useGSAP(() => {
   let translateX: number = 0;
@@ -28,7 +73,7 @@ const Work = () => {
     scrollTrigger: {
       trigger: ".work-section",
       start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
+      end: `+=${translateX}`,
       scrub: true,
       pin: true,
       id: "work",
@@ -40,7 +85,6 @@ const Work = () => {
     ease: "none",
   });
 
-  // Clean up (optional, good practice)
   return () => {
     timeline.kill();
     ScrollTrigger.getById("work")?.kill();
@@ -53,21 +97,20 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
+          {projects.map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
                 <div className="work-title">
-                  <h3>0{index + 1}</h3>
-
+                  <h3>{String(index + 1).padStart(2, "0")}</h3>
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{project.name}</h4>
+                    <p>{project.category}</p>
                   </div>
                 </div>
                 <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+                <p>{project.tools}</p>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
+              <WorkImage image={project.image} alt={project.name} link={project.link} />
             </div>
           ))}
         </div>

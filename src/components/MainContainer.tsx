@@ -2,6 +2,8 @@ import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
 import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
+import Education from "./Education";
+import Skills from "./Skills";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
@@ -41,7 +43,9 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <Landing>{!isDesktopView && children}</Landing>
             <About />
             <WhatIDo />
+            <Skills />
             <Career />
+            <Education />
             <Work />
             {isDesktopView && (
               <Suspense fallback={<div>Loading....</div>}>

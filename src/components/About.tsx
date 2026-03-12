@@ -6,9 +6,13 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+          Computer Science graduate from San Diego State University (GPA 3.5)
+          and CompTIA Security+ certified (June 2025), with hands-on experience
+          in client-facing roles at JPMorgan Chase. I combine a strong technical
+          foundation in software engineering and cybersecurity with sharp
+          problem-solving and communication skills built over years in
+          fast-paced, high-stakes environments. I'm driven by building clean,
+          purposeful software that makes a real difference.
         </p>
       </div>
     </div>
