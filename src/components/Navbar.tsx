@@ -42,9 +42,7 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          <img src="/images/logo_nbg.png" alt="HM" className="navbar-logo" />
-        </a>
+        <a href="/#" className="navbar-title" data-cursor="disable"></a>
         <a
           href="mailto:Manesh1Hooman@gmail.com"
           className="navbar-connect"
