@@ -11,7 +11,7 @@ const projects = [
     name: "TacticLang",
     category: "Programming Language / Interpreter",
     tools: "Python",
-    image: "/images/construction.png",
+    image: "/images/tictac.png",
     link: "https://github.com/hoomanmanesh/TacticLang",
   },
   {
@@ -29,11 +29,11 @@ const projects = [
     link: "https://github.com/hoomanmanesh/AztecBBallScouting",
   },
   {
-    name: "Valentine",
-    category: "Creative Web",
-    tools: "JavaScript, HTML, CSS",
-    image: "/images/construction.png",
-    link: "https://github.com/hoomanmanesh/Valentine",
+    name: "Car Manufacturing Simulator",
+    category: "Simulation",
+    tools: "C++",
+    image: "/images/car_assembly.png",
+    link: "https://github.com/HoomanManesh/Car-Manufacturing-Simulator",
   },
   {
     name: "Background Remover",
@@ -46,7 +46,7 @@ const projects = [
     name: "JPMorgan Forage",
     category: "Software Engineering",
     tools: "Java",
-    image: "/images/construction.png",
+    image: "/images/transaction.png",
     link: "https://github.com/hoomanmanesh/forage-midas",
   },
 ];
