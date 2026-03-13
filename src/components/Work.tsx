@@ -39,7 +39,7 @@ const projects = [
     name: "Background Remover",
     category: "Full-Stack Web Application",
     tools: "Python, Flask, JavaScript, HTML, CSS",
-    image: "/images/hm_bgr.png",
+    image: "/images/HM_BGR.png",
     link: "https://github.com/hoomanmanesh/background-remover",
   },
   {
