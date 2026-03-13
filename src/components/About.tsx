@@ -6,13 +6,11 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Computer Science graduate from San Diego State University (GPA 3.5)
-          and CompTIA Security+ certified (June 2025), with hands-on experience
-          in client-facing roles at JPMorgan Chase. I combine a strong technical
-          foundation in software engineering and cybersecurity with sharp
-          problem-solving and communication skills built over years in
-          fast-paced, high-stakes environments. I'm driven by building clean,
-          purposeful software that makes a real difference.
+          CS grad from SDSU, CompTIA Security+ certified, and currently
+          building backend systems at NXT Robotics while serving clients at
+          JPMorgan Chase. I engineer scalable, secure software — from APIs
+          and data pipelines to robotics systems — and I bring a
+          security-first mindset to everything I build.
         </p>
       </div>
     </div>

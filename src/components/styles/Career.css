@@ -46,6 +46,29 @@
   font-weight: 300;
   margin: 0;
 }
+.career-info-box--featured {
+  border-left: 3px solid var(--accentColor);
+  padding-left: 30px;
+  margin-top: 20px;
+}
+.career-info-box--featured h4 {
+  font-size: 40px !important;
+  line-height: 38px !important;
+  background: linear-gradient(90deg, #ffffff, #c2a4ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.career-info-box--featured h5 {
+  font-size: 22px !important;
+  color: var(--accentColor);
+}
+.career-info-box--featured h3 {
+  color: var(--accentColor);
+}
+.career-info-box--featured p {
+  font-size: 20px !important;
+}
 .career-info-in {
   display: flex;
   width: 40%;
